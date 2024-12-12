@@ -1,15 +1,44 @@
-<!-- templates/home.html -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Hoş Geldiniz</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=REM&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hoş Geldiniz!</h1>
-    <p>Giriş başarılı oldu.</p>
-    <a href="{{ url_for('logout') }}">Çıkış Yap</a>
+    <div class="container">
+        <h1 class="welcome-text">Hoş geldiniz, {{ user[1] }}!</h1>
+
+        <!-- Dropdown menü -->
+        <form action="{{ url_for('prediction') }}" method="get" class="dropdown-form">
+            <label for="company">BIST100 Şirketleri:</label>
+            <select name="company_id" id="company" required>
+                <option value="" disabled selected>Lütfen bir şirket seçiniz</option>  <!-- Varsayılan seçenek -->
+                {% for company in companies %}
+                    <option value="{{ company.id }}">{{ company[1] }}</option>  <!-- Şirket adını doğru kolondan çektiğinizden emin olun -->
+                {% endfor %}
+            </select>
+                       
+            <button type="submit">Tahmin Yap</button>
+        </form>
+        
+
+        <!-- Avatar ve çıkış menüsü -->
+        <div class="avatar-menu">
+            <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="Avatar" class="avatar" onclick="toggleMenu()">
+            <div id="logoutMenu" class="logout-menu">
+                <a href="{{ url_for('logout') }}" class="logout-link">Çıkış Yap</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('logoutMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>

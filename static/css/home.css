@@ -1,25 +1,201 @@
-/* static/css/home.css */
+/* Genel sıfırlama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rem', sans-serif; 
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Tahoma', sans-serif;
+}
+
+/* Sayfa arka planı ve metin stili */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-image: url('/static/images/wallpaper1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #EEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 20px;
+    flex-direction: column;
 }
 
-h1 {
-    color: #2d2d2d;
+/* Hoş geldiniz metni için stil */
+.welcome-text {
+    font-family: 'REM', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(to right, #ff7e5f, #feb47b, #ff9a8b, #f6c5e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+    text-transform: uppercase;
 }
 
-a {
-    display: inline-block;
-    margin-top: 20px;
+#company {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     padding: 10px;
-    background-color: #007bff;
+    font-size: 16px;
+    color: #000000; /* Siyah yazı rengi */
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    cursor: pointer;
+}
+
+#company option {
+    color: #000; /* Siyah yazı */
+    background-color: #fff; /* Beyaz arka plan */
+}
+
+
+/* Submit butonunun düzenlenmesi */
+button[type="submit"] {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Buton hover efekti */
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+
+/* Dropdown Menü */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    width: 150px;
+    padding: 10px;
+}
+
+.dropdown-menu .logout-link {
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
-a:hover {
-    background-color: #0056b3;
+.dropdown-menu .logout-link:hover {
+    color: #ff7e5f;
+}
+
+/* Dropdown formu */
+.dropdown-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: 400px;
+}
+
+/* Dropdown label stili */
+.dropdown-form label {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Dropdown menü (select) */
+.dropdown-form select {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Açık beyaz arka plan */
+    border: 2px solid #555;
+    border-radius: 5px;
+    width: 175px;
+    color: #000000; /* Siyah yazı */
+}
+
+/* Dropdown buton stili */
+.dropdown-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover efekti */
+.dropdown-form button:hover {
+    background-color: #45a049;
+}
+
+/* Avatar menüsünü sağa hizalamak ve tam ortalamak */
+.avatar-menu {
+    position: fixed;  /* Sayfada sabit kalsın */
+    top: 20px;  /* Sayfanın üst kısmından 20px aşağıda */
+    left: 97%;  /* Sayfanın ortasına yerleştir */
+    transform: translateX(-50%);  /* Ortalamak için */
+    z-index: 1000;  /* Diğer öğelerin üstünde görünmesi için */
+}
+
+/* Logout menüsünün boyutunu küçültmek */
+.logout-menu {
+    display: none;
+    position: absolute;
+    top: 50px;  /* Avatar'ın hemen altına yerleştir */
+    left: 0px;  /* Logout menüsünü avatarla aynı hizaya getirmek için */
+    transform: translateX(-50%);  /* Menü tam olarak avatarın ortasında olacak şekilde hizala */
+    background-color: rgba(0, 0, 0, 0.8);  /* Koyu arka plan */
+    color: white;
+    padding: 10px;  /* Padding değerini küçültüyoruz */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Yumuşak gölge */
+    z-index: 1000;
+    min-width: 150px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;  /* Font boyutunu küçültüyoruz */
+}
+
+.logout-link {
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 14px;  /* Font boyutunu küçültüyoruz */
+    font-weight: 500;
+    padding: 8px 0;
+    display: block;  /* Bağlantıları alt alta yerleştirir */
+    transition: color 0.3s ease;  /* Yumuşak renk geçişi */
+}
+
+/* Avatar stil */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;  /* Yumuşak dönüş efekti */
+}
+
+.avatar:hover {
+    transform: rotate(15deg);  /* Hover efekti */
 }

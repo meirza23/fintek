@@ -116,9 +116,33 @@ def home():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM Kullanicilar WHERE id = ?', (session['user_id'],))
     user = cursor.fetchone()
+
+    # BIST100 şirketlerini al
+    cursor.execute('SELECT * FROM Bist100Sirketleri')
+    companies = cursor.fetchall()
+    
+    print(companies)
+
     conn.close()
 
-    return render_template('home.html', user=user)  # Normal kullanıcı sayfası
+    return render_template('home.html', user=user, companies=companies)
+
+@app.route('/prediction', methods=['GET', 'POST'])
+def prediction():
+    # BIST100 şirketinin ID'sini URL'den al
+    company_id = request.args.get('company_id')
+
+    # Şirket bilgilerini veritabanından al
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Bist100Sirketleri WHERE id = ?', (company_id,))
+    company = cursor.fetchone()
+    conn.close()
+
+    # Burada tahminleme işlemi yapılacak
+
+    return render_template('prediction.html', company=company)
+
 
 @app.route('/logout')
 def logout():
