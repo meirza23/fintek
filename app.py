@@ -120,8 +120,6 @@ def home():
     # BIST100 şirketlerini al
     cursor.execute('SELECT * FROM Bist100Sirketleri')
     companies = cursor.fetchall()
-    
-    print(companies)
 
     conn.close()
 
