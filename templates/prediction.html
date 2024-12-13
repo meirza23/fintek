@@ -4,13 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tahmin Sayfası</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=REM&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Şirket: {{ company[1] }}</h1> <!-- Şirket adı -->
+    <!-- Geri git simgesi -->
+    <img src="{{ url_for('static', filename='images/back.png') }}" alt="Geri" class="back-icon" onclick="window.location.href='/home'">
 
-    <!-- Burada tahminleme sonuçları yer alacak -->
-    <p>Burada tahminleme işlemi yapılacak...</p>
+    <div class="header">
+        <h1>Şirket: {{ company[1] }}</h1> <!-- Şirket adı -->
+        <div class="left">
+            <p>Tarih</p>
+            <p>{{ date }}</p>
+            <p>Hacmi</p>
+            <p>{{ volume }}</p>
+        </div>
+        <div class="right">
+            <p>Dünkü Kapanış Değeri</p>
+            <p>{{ previous_close }}</p>
+            <p>Tahmini Fiyat</p>
+            <p>{{ predicted_price }}</p>
+        </div>
+    </div>
+    
 
-    <a href="{{ url_for('home') }}">Geri</a>
+
+    <!-- Grafik alanı -->
+    <div class="chart-area">
+        <p>Buraya grafik eklenecek...</p>
+    </div>
+
+    <!-- Footer kısmı -->
+    <div class="footer">
+        <p class="result">
+            Sonuç: <span class="{{ result_class }}">{{ result_text }}</span>
+        </p>
+    </div>
 </body>
 </html>

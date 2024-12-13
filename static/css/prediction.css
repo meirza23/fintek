@@ -1,0 +1,117 @@
+/* Genel sıfırlama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'REM', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url('/static/images/wallpaper2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #000;
+}
+
+/* Geri simgesi */
+.back-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Header kısmı */
+.header {
+    position: absolute;
+    top: 20px; /* Üstten konum */
+    left: 900px; /* Sayfanın ortasına yerleştirecek */
+    transform: translateX(-50%); /* Sol-sağ ortalama */
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 80%; /* Daha geniş bir alan */
+}
+
+/* H1 başlık */
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+}
+
+/* Sol ve sağdaki p etiketleri */
+.header .left, .header .right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    bottom: -50px; /* h1'in altına konumlandır */
+}
+
+.header .left {
+    left: 500px; /* Sol altta */
+    text-align: left;
+    top: 100px;
+    gap: 20px;
+}
+
+.header .right {
+    right: 550px; /* Sağ altta */
+    text-align: right;
+    top: 100px;
+    text-align: left;
+    gap: 20px;
+}
+
+.header p {
+    margin: 5px;
+    color: #000;
+}
+
+
+/* Grafik alanı */
+.chart-area {
+    position: absolute;
+    top: 550px; /* Sayfanın ortasına hizalanmış */
+    left: 900px;
+    transform: translate(-50%, -50%); /* Tam merkezde konum */
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px dashed #888;
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* Footer kısmı */
+.footer {
+    position: absolute;
+    bottom: 80px; /* Alt kısımda konum */
+    text-align: center;
+    left: 820px;
+}
+
+.footer .result {
+    font-size: 2rem; /* Daha büyük font */
+    font-weight: bold; /* Kalın metin */
+    text-transform: uppercase; /* Tamamen büyük harf */
+    color: #000;
+}
